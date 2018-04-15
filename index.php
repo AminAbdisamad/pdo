@@ -1,11 +1,5 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$password = 'Aminux@11';
-$database = 'learnpdo';
-
-$dsn = 'mysql:host='.$host.';dbname='.$database;
-$pdo = new PDO($dsn,$username,$password);
+require_once('db.php');
 //defaulting PDO FETCH_OBJECT
 $pdo -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $status ='admin';
