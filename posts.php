@@ -50,3 +50,10 @@ foreach($posts as $post){
 // }
 
 
+// Fech single post
+$id = 5;
+$query = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
+$query->execute(['id'=>$id]);
+$post = $query->fetch();
+echo $post->title.'<br>';
+echo $post->body.'<br>';
