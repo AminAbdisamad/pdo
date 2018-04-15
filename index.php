@@ -38,3 +38,4 @@ $stmt ->execute(['name'=>$name]);
 //echo 'User '.$name.' has been deleted successfully';
 
 /* UPDATE */
+
