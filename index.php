@@ -1,7 +1,6 @@
 <?php
 require_once('db.php');
 //defaulting PDO FETCH_OBJECT
-$pdo -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $status ='admin';
 $sql = 'SELECT * FROM users WHERE status =:status';
 $st = $pdo->prepare($sql);
