@@ -74,3 +74,8 @@ $postCount = $query->rowCount();
 
 
 // update post
+$id = 7;
+$title = 'Learn Dart and Flutter';
+$query = $pdo->prepare('UPDATE posts SET title = :title WHERE id = :id');
+$query->execute(['title'=>$title,'id'=>$id]);
+
