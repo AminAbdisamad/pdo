@@ -79,3 +79,8 @@ $title = 'Learn Dart and Flutter';
 $query = $pdo->prepare('UPDATE posts SET title = :title WHERE id = :id');
 $query->execute(['title'=>$title,'id'=>$id]);
 
+//delete post
+$id = 1;
+$query = $pdo->prepare('DELETE FROM posts WHERE id = :id');
+$query->execute(['id'=>$id]);
+//echo 'User Deleted successfully';
