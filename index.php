@@ -32,3 +32,15 @@ $stmt ->execute(['name'=>$name]);
 
 /* UPDATE */
 
+
+
+// limit posts 
+$limit = 2;
+$query = $pdo->prepare('SELECT * FROM posts WHERE author = ? && is_published = ? LIMIT = ?');
+$query->execute([$author,$is_published,$limit]);
+$posts = $query->fetchAll();
+foreach($posts as $post){
+    echo $post->title .'<br>';
+
+}
+

@@ -26,6 +26,7 @@ while($row = $stmt->fetch()){
 $author = 'Aminux';
 $is_published = true;
 
+
 $sql = 'SELECT * FROM posts WHERE author = :author && is_published = :is_published';
 $prep = $pdo->prepare($sql);
 $prep->execute(['author'=>$author, 'is_published'=>$is_published]);
@@ -53,8 +54,9 @@ $query = $pdo->prepare('SELECT * FROM posts');
 $query->execute();
 $post = $query->fetchAll();
 foreach($post as $post){
-    echo $post->title.'<br>';
+    //echo $post->title.'<br>';
 }
+
 
 // Fech single post
 $id = 5;
@@ -93,5 +95,7 @@ $posts = $query->fetchAll();
 echo 'Searched Data ';
 echo '<br>';
 foreach($posts as $post){
-    echo $post->title.'<br>';
+    //echo $post->title.'<br>';
 }
+
+
