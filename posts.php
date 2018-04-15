@@ -84,3 +84,14 @@ $id = 1;
 $query = $pdo->prepare('DELETE FROM posts WHERE id = :id');
 $query->execute(['id'=>$id]);
 //echo 'User Deleted successfully';
+
+//Search data 
+$search = '%basic%';
+$query = $pdo->prepare('SELECT * FROM posts WHERE title LIKE :title');
+$query->execute(['title'=>$search]);
+$posts = $query->fetchAll();
+echo 'Searched Data ';
+echo '<br>';
+foreach($posts as $post){
+    echo $post->title.'<br>';
+}
