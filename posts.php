@@ -32,23 +32,29 @@ $prep->execute(['author'=>$author, 'is_published'=>$is_published]);
 $posts = $prep->fetchAll();
 
 foreach($posts as $post){
-    echo $post->title.'<br>';
+    //echo $post->title.'<br>';
 }
 // Positional Parameter
 
 /* SELECT FROM TABLE */
-// $author = 'Aminux';
-// $is_published = true;
+$author = 'Aminux';
+$is_published = true;
 
-// $sql = 'SELECT * FROM posts WHERE author = ? ';
-// $prep = $pdo->prepare($sql);
-// $prep->execute([$author]);
-// $posts = $prep->fetchAll();
+$sql = 'SELECT * FROM posts WHERE author = ? ';
+$prep = $pdo->prepare($sql);
+$prep->execute([$author]);
+$posts = $prep->fetchAll();
 
-// foreach($posts as $post){
-//     echo $post->title.'<br>';
-// }
-
+foreach($posts as $post){
+    //echo $post->title.'<br>';
+}
+// fetch all posts 
+$query = $pdo->prepare('SELECT * FROM posts');
+$query->execute();
+$post = $query->fetchAll();
+foreach($post as $post){
+    echo $post->title.'<br>';
+}
 
 // Fech single post
 $id = 5;
@@ -63,5 +69,8 @@ $post = $query->fetch();
 $query = $pdo->prepare('SELECT * FROM posts');
 $query->execute();
 $postCount = $query->rowCount();
-echo $postCount;
+//echo $postCount;
 
+
+
+// update post
