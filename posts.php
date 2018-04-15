@@ -11,28 +11,42 @@ while($row = $stmt->fetch()){
 //UNSAFE 
 //$query = "SELECT * FROM posts WHERE author ='$author'";
 
-// Positional Parameter
 
-/* Insert Using Positional parameter */
-$title = 'Javascript Basics';
-$body = 'This is a javascript basics course that will cover the very foundation of js';
+
+/* Insert Using Named parameter */
+// $title = 'Java Basics';
+// $body = 'This is a Java basics course that will cover the very foundation of java';
+// $author = 'Aminux';
+// $published =false;
+// $sql = 'INSERT INTO posts (title,body,author,is_published) VALUES (:title,:body,:author,:is_published)';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute(['title'=>$title,'body'=>$body,'author'=>$author,'is_published'=>$published]);
+
+/* Read from table */
 $author = 'Aminux';
-$published = 'yes';
+$is_published = true;
 
-
-
-
-
-/* SELECT FROM TABLE */
-$author = 'Aminux';
-
-$sql = 'SELECT * FROM posts WHERE author = ?';
+$sql = 'SELECT * FROM posts WHERE author = :author && is_published = :is_published';
 $prep = $pdo->prepare($sql);
-$prep->execute([$author]);
+$prep->execute(['author'=>$author, 'is_published'=>$is_published]);
 $posts = $prep->fetchAll();
 
 foreach($posts as $post){
     echo $post->title.'<br>';
 }
+// Positional Parameter
+
+/* SELECT FROM TABLE */
+// $author = 'Aminux';
+// $is_published = true;
+
+// $sql = 'SELECT * FROM posts WHERE author = ? ';
+// $prep = $pdo->prepare($sql);
+// $prep->execute([$author]);
+// $posts = $prep->fetchAll();
+
+// foreach($posts as $post){
+//     echo $post->title.'<br>';
+// }
 
 
