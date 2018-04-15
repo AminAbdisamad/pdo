@@ -55,5 +55,13 @@ $id = 5;
 $query = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
 $query->execute(['id'=>$id]);
 $post = $query->fetch();
-echo $post->title.'<br>';
-echo $post->body.'<br>';
+// echo $post->title.'<br>';
+// echo $post->body.'<br>';
+
+// Get row count
+
+$query = $pdo->prepare('SELECT * FROM posts');
+$query->execute();
+$postCount = $query->rowCount();
+echo $postCount;
+
