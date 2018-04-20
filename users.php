@@ -9,18 +9,26 @@ require_once 'config/config.php';
 // $st = $pdo->prepare($sql);
 // $st->execute(['username'=>$username,'email'=>$emai,'status'=>$status]);
 
-
+/* Error Messages*/
+$msgColor = '';
+$msgText = '';
  
 /* Insert Users to the database */
 if(isset($_POST['submit'])){
     $username = ($_POST['username']);
     $email =    ($_POST['email']);
     $status =   ($_POST['status']);
-    $sql = 'INSERT INTO users (name,email,status)VALUES(:name,:email,:status)';
-    $stm = $pdo->prepare($sql);
-    $stm->execute(['name'=>$username,'email'=>$email,'status'=>$status]);
-    $msg = "User Added successfully";
-    echo $msg;
+    if(!empty($username) && !empty($email) && !empty($status)){
+        $sql = 'INSERT INTO users (name,email,status)VALUES(:name,:email,:status)';
+        $stm = $pdo->prepare($sql);
+        $stm->execute(['name'=>$username,'email'=>$email,'status'=>$status]);
+        $msgColor = 'alert-success';
+        $msgText  = 'User Added Successfully';
+    }else{
+        $msgColor = 'alert-danger';
+        $msgText  = 'Empty fields are not allowed';
+    }
+    
 }
 /* read users in the database */
 $stmt = $pdo->prepare('SELECT * FROM users');
@@ -48,7 +56,13 @@ if(isset($_POST['delete'])){
 <?php require_once 'inc/header.php'; ?>
 <main>
     <div class="container">
-    <h3>Add User</h3>
+    <!-- error handling  -->
+    <?php if(!empty($msgText)) : ?>
+      <div style="padding:10px;"class="<?php echo $msgColor?>">
+        <?php echo $msgText; ?>
+      </div>
+    <?php endif; ?>
+    <h4>Add User</h4>
     <div class="row">
     <form class="col s12" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
       <div class="row">

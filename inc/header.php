@@ -3,7 +3,8 @@
     <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
+      <!--Import bootstrap4-->
+      <link rel="stylesheet" href ="https://bootswatch.com/4/cosmo/bootstrap.min.css" type="text/css">
       <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <!-- My style-->
