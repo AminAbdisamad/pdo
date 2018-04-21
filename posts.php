@@ -1,6 +1,15 @@
 <?php
 require_once 'config/config.php';
 require_once 'config/db.php';
+/* Add posts to DB*/
+
+
+
+
+
+
+
+
 require_once 'inc/header.php'; ?>
 <main>
 <main>

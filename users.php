@@ -5,17 +5,21 @@ require_once 'config/config.php';
 $msgColor = '';
 $msgText = '';
 /* Insert Users to the database */
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']))
+{
     $username = ($_POST['username']);
     $email =    ($_POST['email']);
     $status =   ($_POST['status']);
-    if(!empty($username) && !empty($email) && !empty($status)){
+    if(!empty($username) && !empty($email) && !empty($status))
+    {
         $sql = 'INSERT INTO users (name,email,status)VALUES(:name,:email,:status)';
         $stm = $pdo->prepare($sql);
         $stm->execute(['name'=>$username,'email'=>$email,'status'=>$status]);
         $msgColor = 'alert-success';
         $msgText  = 'User Added Successfully';
-    }else{
+    }
+    else
+    {
         $msgColor = 'alert-danger';
         $msgText  = 'Empty fields are not allowed';
     }
@@ -28,7 +32,8 @@ $posts = $stmt->fetchAll();
 
 
 /* delete user */
-if(isset($_POST['delete'])){
+if(isset($_POST['delete']))
+{
   $deleteId = $_POST['delete_id'];
   $sql = 'DELETE FROM users WHERE id = :id';
   $stmt = $pdo->prepare($sql);
@@ -39,7 +44,8 @@ if(isset($_POST['delete'])){
 }
 
 /* Edit user */
-if(isset($_POST['edit'])){
+if(isset($_POST['edit']))
+{
   $editId = $_POST['edit_id'];
   $sql = 'UPDATE users SET () WHERE id = :id';
   $stmt = $pdo->prepare($sql);
